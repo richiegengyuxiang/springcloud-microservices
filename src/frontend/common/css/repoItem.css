@@ -1,0 +1,30 @@
+.repo-item {
+    border-bottom: 1px solid #C0C0C0;
+    padding: 1em 0.75em;
+}
+
+.repo-heading {
+    padding: 0.5em 0;
+}
+
+.repo-heading a {
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
+.repo-heading a:hover{
+    text-decoration: underline;
+}
+
+.repo-type {
+    border: 1px solid #c0c0c0;
+    border-radius: 4px;
+    padding: 0 4px;
+}
+
+.repo-description {
+    color: #404040;
+    padding: 0.5em 0;
+}
+
