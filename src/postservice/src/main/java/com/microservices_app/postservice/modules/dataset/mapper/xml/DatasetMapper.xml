@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.microservices_app.postservice.modules.dataset.mapper.IDatasetMapper">
+    <select id="getAllDatasets" resultType="com.microservices_app.postservice.modules.dataset.entity.Dataset">
+        SELECT * FROM Datasets
+    </select>
+
+    <select id="getByRepoId" resultType="com.microservices_app.postservice.modules.dataset.entity.Dataset">
+        SELECT * FROM Datasets WHERE repoId = #{id}
+    </select>
+
+    <select id="getById" resultType="com.microservices_app.postservice.modules.dataset.entity.Dataset">
+        SELECT * FROM Datasets WHERE id = #{id}
+    </select>
+
+    <insert id="upload">
+        INSERT INTO Datasets (id, name, description, type, repoId) VALUES (#{id}, #{fileName}, #{description}, #{dataType}, #{repoId})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM Datasets WHERE id = #{id}
+    </delete>
+</mapper>
