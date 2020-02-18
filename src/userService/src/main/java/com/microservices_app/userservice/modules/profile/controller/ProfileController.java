@@ -1,6 +1,6 @@
-package com.microservices_app.userservice.modules.user.controller;
+package com.microservices_app.userservice.modules.profile.controller;
 
-import com.microservices_app.userservice.modules.user.service.impl.UserService;
+import com.microservices_app.userservice.modules.profile.service.impl.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,10 +8,10 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/")
-public class UserController {
+public class ProfileController {
 
     @Autowired
-    private UserService userService;
+    private ProfileService profileService;
 
     @RequestMapping("/")
     public String foo(){
@@ -19,13 +19,12 @@ public class UserController {
         final String uri = "http://localhost:5000";
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri, String.class);
-        System.out.println(result);
 
-        return "User service";
+        return result;
     }
 
     public String getInfo(){
-        return userService.getInfo(1).toString();
+        return profileService.getInfo(1).toString();
     }
 }
 

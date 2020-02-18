@@ -1,10 +1,10 @@
-package com.microservices_app.userservice.modules.user.entity;
+package com.microservices_app.userservice.modules.profile.entity;
 
 import lombok.Data;
 
 @Data
-public class User {
-    private Integer id;
+public class Profile {
+    private String id;
     private String username;
     private String email;
     private String password;
