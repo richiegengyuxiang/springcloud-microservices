@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  postservice:
+    build: ./src/postservice
+    ports:
+      - 8082:8082
+    depends_on:
+      - dataprocessingservice
+    networks:
+      - local
+  dataprocessingservice:
+    build: ./src/dataprocessingservice
+    ports:
+      - 5000:5000
+    networks:
+      - local
+networks:
+  local:
+    driver: bridge

@@ -21,7 +21,7 @@ public class RepoController {
     @RequestMapping("/getAll")
     public List<Repo> getAllRepos(){
 
-        final String uri = "http://localhost:5000";
+        final String uri = "http://dataprocessingservice:5000";
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri, String.class);
         System.out.println(result);
