@@ -7,12 +7,19 @@ services:
       - 8082:8082
     depends_on:
       - dataprocessingservice
+      - mysqlserver
     networks:
       - local
   dataprocessingservice:
     build: ./src/dataprocessingservice
     ports:
       - 5000:5000
+    networks:
+      - local
+  mysqlserver:
+    build: ./src/mysqlserver
+    ports:
+      - 3306:3306
     networks:
       - local
 networks:
