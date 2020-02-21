@@ -1,4 +1,5 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:8
+WORKDIR	/usr/src/postservice
 COPY target/*.jar postservice.jar
 EXPOSE 8082
-ENTRYPOINT ["java","-jar","/postservice.jar"]
+CMD ["java","-jar","postservice.jar"]
