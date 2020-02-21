@@ -1,4 +1,4 @@
 FROM nginx:1.16.1
-COPY . .
-COPY /etc/nginx/nginx.conf /etc/nginx/nginx.conf
-EXPOSE 3000
+COPY . /usr/share/nginx/html/frontend
+COPY nginx.conf.COPY /etc/nginx/nginx.conf
+EXPOSE 3002
