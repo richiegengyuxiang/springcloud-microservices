@@ -3,6 +3,7 @@ version: "3"
 services:
   frontend:
     build: ./src/frontend
+    image: rickygeng97/microservicesapp_frontend
     ports:
       - 3002:3002
     depends_on:
@@ -11,6 +12,7 @@ services:
       - local
   postservice:
     build: ./src/postservice
+    image: rickygeng97/microservicesapp_postservice
     ports:
       - 8082:8082
     depends_on:
@@ -20,12 +22,14 @@ services:
       - local
   dataprocessingservice:
     build: ./src/dataprocessingservice
+    image: rickygeng97/microservicesapp_dataprocessingservice
     ports:
       - 5000:5000
     networks:
       - local
   mysqlserver:
     build: ./src/mysqlserver
+    image: rickygeng97/microservicesapp_mysqlserver
     ports:
       - 3306:3306
     networks:

@@ -1,6 +1,8 @@
 $(".top-nav").load("../components/topNav.html")
 $(".datasets-container").load("../components/datasetsContainer.html")
 
+console.log("test222")
+
 $.ajax({
     type:"GET",
     url: "/api/repos/getAll/",
