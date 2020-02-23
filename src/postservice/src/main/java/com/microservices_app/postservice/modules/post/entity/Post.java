@@ -1,9 +1,9 @@
-package com.microservices_app.postservice.modules.repo.entity;
+package com.microservices_app.postservice.modules.post.entity;
 
 import lombok.Data;
 
 @Data
-public class Repo {
+public class Post {
 
     private String id;
     private String name;

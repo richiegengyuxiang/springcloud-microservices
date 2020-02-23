@@ -41,7 +41,7 @@
 			"url": "https://github.com/arschmitz"
 		}
 	],
-	"repository": {
+	"postsitory": {
 		"type": "git",
 		"url": "git://github.com/jquery/jquery-ui.git"
 	},

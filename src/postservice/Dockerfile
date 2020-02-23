@@ -1,7 +1,6 @@
-FROM maven:3.6-jdk-8
+FROM openjdk:8
 WORKDIR	/usr/src/postservice
-COPY . .
+COPY target/postservice-0.0.1-SNAPSHOT.jar postservice.jar
 EXPOSE 8082
 EXPOSE 80 2222
-RUN mvn install
-CMD ["java","-jar","target/postservice-0.0.1-SNAPSHOT.jar"]
+CMD ["java","-jar","postservice.jar"]

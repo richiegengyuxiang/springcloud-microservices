@@ -720,7 +720,7 @@ jasmine.Env = function() {
   this.currentSuite = null;
   this.currentRunner_ = new jasmine.Runner(this);
 
-  this.reporter = new jasmine.MultiReporter();
+  this.postrter = new jasmine.MultiPostrter();
 
   this.updateInterval = jasmine.DEFAULT_UPDATE_INTERVAL;
   this.defaultTimeoutInterval = jasmine.DEFAULT_TIMEOUT_INTERVAL;
@@ -791,11 +791,11 @@ jasmine.Env.prototype.nextSuiteId = function () {
 };
 
 /**
- * Register a reporter to receive status updates from Jasmine.
- * @param {jasmine.Reporter} reporter An object which will receive status updates.
+ * Register a postrter to receive status updates from Jasmine.
+ * @param {jasmine.Postrter} postrter An object which will receive status updates.
  */
-jasmine.Env.prototype.addReporter = function(reporter) {
-  this.reporter.addReporter(reporter);
+jasmine.Env.prototype.addPostrter = function(postrter) {
+  this.postrter.addPostrter(postrter);
 };
 
 jasmine.Env.prototype.execute = function() {
@@ -1010,35 +1010,35 @@ jasmine.Env.prototype.contains_ = function(haystack, needle) {
 jasmine.Env.prototype.addEqualityTester = function(equalityTester) {
   this.equalityTesters_.push(equalityTester);
 };
-/** No-op base class for Jasmine reporters.
+/** No-op base class for Jasmine postrters.
  *
  * @constructor
  */
-jasmine.Reporter = function() {
+jasmine.Postrter = function() {
 };
 
 //noinspection JSUnusedLocalSymbols
-jasmine.Reporter.prototype.reportRunnerStarting = function(runner) {
+jasmine.Postrter.prototype.postrtRunnerStarting = function(runner) {
 };
 
 //noinspection JSUnusedLocalSymbols
-jasmine.Reporter.prototype.reportRunnerResults = function(runner) {
+jasmine.Postrter.prototype.postrtRunnerResults = function(runner) {
 };
 
 //noinspection JSUnusedLocalSymbols
-jasmine.Reporter.prototype.reportSuiteResults = function(suite) {
+jasmine.Postrter.prototype.postrtSuiteResults = function(suite) {
 };
 
 //noinspection JSUnusedLocalSymbols
-jasmine.Reporter.prototype.reportSpecStarting = function(spec) {
+jasmine.Postrter.prototype.postrtSpecStarting = function(spec) {
 };
 
 //noinspection JSUnusedLocalSymbols
-jasmine.Reporter.prototype.reportSpecResults = function(spec) {
+jasmine.Postrter.prototype.postrtSpecResults = function(spec) {
 };
 
 //noinspection JSUnusedLocalSymbols
-jasmine.Reporter.prototype.log = function(str) {
+jasmine.Postrter.prototype.log = function(str) {
 };
 
 /**
@@ -1068,18 +1068,18 @@ jasmine.Block.prototype.execute = function(onComplete) {
   }
   onComplete();
 };
-/** JavaScript API reporter.
+/** JavaScript API postrter.
  *
  * @constructor
  */
-jasmine.JsApiReporter = function() {
+jasmine.JsApiPostrter = function() {
   this.started = false;
   this.finished = false;
   this.suites_ = [];
   this.results_ = {};
 };
 
-jasmine.JsApiReporter.prototype.reportRunnerStarting = function(runner) {
+jasmine.JsApiPostrter.prototype.postrtRunnerStarting = function(runner) {
   this.started = true;
   var suites = runner.topLevelSuites();
   for (var i = 0; i < suites.length; i++) {
@@ -1088,11 +1088,11 @@ jasmine.JsApiReporter.prototype.reportRunnerStarting = function(runner) {
   }
 };
 
-jasmine.JsApiReporter.prototype.suites = function() {
+jasmine.JsApiPostrter.prototype.suites = function() {
   return this.suites_;
 };
 
-jasmine.JsApiReporter.prototype.summarize_ = function(suiteOrSpec) {
+jasmine.JsApiPostrter.prototype.summarize_ = function(suiteOrSpec) {
   var isSuite = suiteOrSpec instanceof jasmine.Suite;
   var summary = {
     id: suiteOrSpec.id,
@@ -1110,25 +1110,25 @@ jasmine.JsApiReporter.prototype.summarize_ = function(suiteOrSpec) {
   return summary;
 };
 
-jasmine.JsApiReporter.prototype.results = function() {
+jasmine.JsApiPostrter.prototype.results = function() {
   return this.results_;
 };
 
-jasmine.JsApiReporter.prototype.resultsForSpec = function(specId) {
+jasmine.JsApiPostrter.prototype.resultsForSpec = function(specId) {
   return this.results_[specId];
 };
 
 //noinspection JSUnusedLocalSymbols
-jasmine.JsApiReporter.prototype.reportRunnerResults = function(runner) {
+jasmine.JsApiPostrter.prototype.postrtRunnerResults = function(runner) {
   this.finished = true;
 };
 
 //noinspection JSUnusedLocalSymbols
-jasmine.JsApiReporter.prototype.reportSuiteResults = function(suite) {
+jasmine.JsApiPostrter.prototype.postrtSuiteResults = function(suite) {
 };
 
 //noinspection JSUnusedLocalSymbols
-jasmine.JsApiReporter.prototype.reportSpecResults = function(spec) {
+jasmine.JsApiPostrter.prototype.postrtSpecResults = function(spec) {
   this.results_[spec.id] = {
     messages: spec.results().getItems(),
     result: spec.results().failedCount > 0 ? "failed" : "passed"
@@ -1136,10 +1136,10 @@ jasmine.JsApiReporter.prototype.reportSpecResults = function(spec) {
 };
 
 //noinspection JSUnusedLocalSymbols
-jasmine.JsApiReporter.prototype.log = function(str) {
+jasmine.JsApiPostrter.prototype.log = function(str) {
 };
 
-jasmine.JsApiReporter.prototype.resultsForSpecs = function(specIds){
+jasmine.JsApiPostrter.prototype.resultsForSpecs = function(specIds){
   var results = {};
   for (var i = 0; i < specIds.length; i++) {
     var specId = specIds[i];
@@ -1148,7 +1148,7 @@ jasmine.JsApiReporter.prototype.resultsForSpecs = function(specIds){
   return results;
 };
 
-jasmine.JsApiReporter.prototype.summarizeResult_ = function(result){
+jasmine.JsApiPostrter.prototype.summarizeResult_ = function(result){
   var summaryMessages = [];
   var messagesLength = result.messages.length;
   for (var messageIndex = 0; messageIndex < messagesLength; messageIndex++) {
@@ -1181,7 +1181,7 @@ jasmine.Matchers = function(env, actual, spec, opt_isNot) {
   this.actual = actual;
   this.spec = spec;
   this.isNot = opt_isNot || false;
-  this.reportWasCalled_ = false;
+  this.postrtWasCalled_ = false;
 };
 
 // todo: @deprecated as of Jasmine 0.11, remove soon [xw]
@@ -1190,13 +1190,13 @@ jasmine.Matchers.pp = function(str) {
 };
 
 // todo: @deprecated Deprecated as of Jasmine 0.10. Rewrite your custom matchers to return true or false. [xw]
-jasmine.Matchers.prototype.report = function(result, failing_message, details) {
+jasmine.Matchers.prototype.postrt = function(result, failing_message, details) {
   throw new Error("As of jasmine 0.11, custom matchers must be implemented differently -- please see jasmine docs");
 };
 
 jasmine.Matchers.wrapInto_ = function(prototype, matchersClass) {
   for (var methodName in prototype) {
-    if (methodName == 'report') continue;
+    if (methodName == 'postrt') continue;
     var orig = prototype[methodName];
     matchersClass.prototype[methodName] = jasmine.Matchers.matcherFn_(methodName, orig);
   }
@@ -1211,7 +1211,7 @@ jasmine.Matchers.matcherFn_ = function(matcherName, matcherFunction) {
       result = !result;
     }
 
-    if (this.reportWasCalled_) return result;
+    if (this.postrtWasCalled_) return result;
 
     var message;
     if (!result) {
@@ -1760,32 +1760,32 @@ jasmine.getGlobal().clearInterval = function(timeoutKey) {
 /**
  * @constructor
  */
-jasmine.MultiReporter = function() {
-  this.subReporters_ = [];
+jasmine.MultiPostrter = function() {
+  this.subPostrters_ = [];
 };
-jasmine.util.inherit(jasmine.MultiReporter, jasmine.Reporter);
+jasmine.util.inherit(jasmine.MultiPostrter, jasmine.Postrter);
 
-jasmine.MultiReporter.prototype.addReporter = function(reporter) {
-  this.subReporters_.push(reporter);
+jasmine.MultiPostrter.prototype.addPostrter = function(postrter) {
+  this.subPostrters_.push(postrter);
 };
 
 (function() {
   var functionNames = [
-    "reportRunnerStarting",
-    "reportRunnerResults",
-    "reportSuiteResults",
-    "reportSpecStarting",
-    "reportSpecResults",
+    "postrtRunnerStarting",
+    "postrtRunnerResults",
+    "postrtSuiteResults",
+    "postrtSpecStarting",
+    "postrtSpecResults",
     "log"
   ];
   for (var i = 0; i < functionNames.length; i++) {
     var functionName = functionNames[i];
-    jasmine.MultiReporter.prototype[functionName] = (function(functionName) {
+    jasmine.MultiPostrter.prototype[functionName] = (function(functionName) {
       return function() {
-        for (var j = 0; j < this.subReporters_.length; j++) {
-          var subReporter = this.subReporters_[j];
-          if (subReporter[functionName]) {
-            subReporter[functionName].apply(subReporter, arguments);
+        for (var j = 0; j < this.subPostrters_.length; j++) {
+          var subPostrter = this.subPostrters_[j];
+          if (subPostrter[functionName]) {
+            subPostrter[functionName].apply(subPostrter, arguments);
           }
         }
       };
@@ -2137,8 +2137,8 @@ jasmine.Runner = function(env) {
 
 jasmine.Runner.prototype.execute = function() {
   var self = this;
-  if (self.env.reporter.reportRunnerStarting) {
-    self.env.reporter.reportRunnerStarting(this);
+  if (self.env.postrter.postrtRunnerStarting) {
+    self.env.postrter.postrtRunnerStarting(this);
   }
   self.queue.start(function () {
     self.finishCallback();
@@ -2157,7 +2157,7 @@ jasmine.Runner.prototype.afterEach = function(afterEachFunction) {
 
 
 jasmine.Runner.prototype.finishCallback = function() {
-  this.env.reporter.reportRunnerResults(this);
+  this.env.postrter.postrtRunnerResults(this);
 };
 
 jasmine.Runner.prototype.addSuite = function(suite) {
@@ -2340,7 +2340,7 @@ jasmine.Spec.prototype.addMatchers = function(matchersPrototype) {
 };
 
 jasmine.Spec.prototype.finishCallback = function() {
-  this.env.reporter.reportSpecResults(this);
+  this.env.postrter.postrtSpecResults(this);
 };
 
 jasmine.Spec.prototype.finish = function(onComplete) {
@@ -2367,7 +2367,7 @@ jasmine.Spec.prototype.execute = function(onComplete) {
     return;
   }
 
-  this.env.reporter.reportSpecStarting(this);
+  this.env.postrter.postrtSpecStarting(this);
 
   spec.env.currentSpec = spec;
 
@@ -2472,7 +2472,7 @@ jasmine.Suite.prototype.getFullName = function() {
 };
 
 jasmine.Suite.prototype.finish = function(onComplete) {
-  this.env.reporter.reportSuiteResults(this);
+  this.env.postrter.postrtSuiteResults(this);
   this.finished = true;
   if (typeof(onComplete) == 'function') {
     onComplete();
@@ -2531,7 +2531,7 @@ jasmine.util.inherit(jasmine.WaitsBlock, jasmine.Block);
 
 jasmine.WaitsBlock.prototype.execute = function (onComplete) {
   if (jasmine.VERBOSE) {
-    this.env.reporter.log('>> Jasmine waiting for ' + this.timeout + ' ms...');
+    this.env.postrter.log('>> Jasmine waiting for ' + this.timeout + ' ms...');
   }
   this.env.setTimeout(function () {
     onComplete();
@@ -2561,7 +2561,7 @@ jasmine.WaitsForBlock.TIMEOUT_INCREMENT = 10;
 
 jasmine.WaitsForBlock.prototype.execute = function(onComplete) {
   if (jasmine.VERBOSE) {
-    this.env.reporter.log('>> Jasmine waiting for ' + (this.message || 'something to happen'));
+    this.env.postrter.log('>> Jasmine waiting for ' + (this.message || 'something to happen'));
   }
   var latchFunctionResult;
   try {

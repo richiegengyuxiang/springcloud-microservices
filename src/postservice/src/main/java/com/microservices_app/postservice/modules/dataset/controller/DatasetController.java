@@ -18,16 +18,16 @@ public class DatasetController {
     @Autowired
     private DatasetService datasetService;
 
-    public static String storagePath = "/home/rickygeng/IT_Projects/datamart_storage/";
+    public static String storagePath = "/storage/";
 
     @RequestMapping("/getAll")
     public List<Dataset> getAllDatasets() {
         return datasetService.getAllDatasets();
     }
 
-    @RequestMapping("/getByRepoId")
-    public List<Dataset> getByRepoId(@RequestBody String id) {
-        return datasetService.getByRepoId(id);
+    @RequestMapping("/getByPostId")
+    public List<Dataset> getByPostId(@RequestBody String id) {
+        return datasetService.getByPostId(id);
     }
 
     @RequestMapping("/deleteById")
@@ -36,7 +36,6 @@ public class DatasetController {
         Dataset dataset = datasetService.getById(id);
         String dataType = dataset.getType();
         String fileName = dataset.getName();
-
         File file = new File(storagePath + dataType + "/" + fileName);
         file.delete();
 
@@ -45,7 +44,7 @@ public class DatasetController {
 
     @RequestMapping("/upload")
     public void uploadDataset(@RequestParam(name = "file") MultipartFile file,
-                           @RequestParam(name = "repoId") String repoId,
+                           @RequestParam(name = "postId") String postId,
                            @RequestParam(name = "description") String description) throws IOException {
 
         String fileName = file.getOriginalFilename();
@@ -65,7 +64,7 @@ public class DatasetController {
 
         try {
             file.transferTo(uploadFile);
-            datasetService.upload(description, dataType, fileName, repoId);
+            datasetService.upload(description, dataType, fileName, postId);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -77,6 +76,7 @@ public class DatasetController {
         Dataset dataset = datasetService.getById(id);
         String dataType = dataset.getType();
         String fileName = dataset.getName();
+        System.out.println("changed");
 
         File file = new File(storagePath + dataType + "/" + fileName);
         OutputStream os = response.getOutputStream();

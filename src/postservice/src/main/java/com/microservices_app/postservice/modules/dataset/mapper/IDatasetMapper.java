@@ -10,11 +10,11 @@ public interface IDatasetMapper {
 
     List<Dataset> getAllDatasets();
 
-    List<Dataset> getByRepoId(String id);
+    List<Dataset> getByPostId(String id);
 
     Dataset getById(String id);
 
-    void upload(String id, String description, String dataType, String fileName, String repoId);
+    void upload(String id, String description, String dataType, String fileName, String postId);
 
     void deleteById(String id);
 }

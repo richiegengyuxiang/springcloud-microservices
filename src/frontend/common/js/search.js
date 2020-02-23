@@ -13,15 +13,15 @@ $.ajax({
     dataType : 'json',
     success : function(data) {
 
-        $(".result").html(`${data.length} Repository(s) Found`)
+        $(".result").html(`${data.length} Postsitory(s) Found`)
 
         $.each(data, function (index, value) {
-                $(".repo-container").append(
-                    `<div class="repo-item">
-                        <div class="repo-heading">
-                            <a href="/repo/${value.id}" target="_blank">${value.name}</a>
+                $(".post-container").append(
+                    `<div class="post-item">
+                        <div class="post-heading">
+                            <a href="/post/${value.id}" target="_blank">${value.name}</a>
                         </div>
-                        <div class="repo-description">${value.description}</div>
+                        <div class="post-description">${value.description}</div>
                     </div>`
                 )
             }

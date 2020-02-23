@@ -5,8 +5,8 @@
         SELECT * FROM Datasets
     </select>
 
-    <select id="getByRepoId" resultType="com.microservices_app.postservice.modules.dataset.entity.Dataset">
-        SELECT * FROM Datasets WHERE repoId = #{id}
+    <select id="getByPostId" resultType="com.microservices_app.postservice.modules.dataset.entity.Dataset">
+        SELECT * FROM Datasets WHERE postId = #{id}
     </select>
 
     <select id="getById" resultType="com.microservices_app.postservice.modules.dataset.entity.Dataset">
@@ -14,7 +14,7 @@
     </select>
 
     <insert id="upload">
-        INSERT INTO Datasets (id, name, description, type, repoId) VALUES (#{id}, #{fileName}, #{description}, #{dataType}, #{repoId})
+        INSERT INTO Datasets (id, name, description, type, postId) VALUES (#{id}, #{fileName}, #{description}, #{dataType}, #{postId})
     </insert>
 
     <delete id="deleteById">

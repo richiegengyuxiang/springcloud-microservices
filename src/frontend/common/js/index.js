@@ -1,29 +1,27 @@
 $(".top-nav").load("../components/topNav.html")
 $(".datasets-container").load("../components/datasetsContainer.html")
 
-console.log("test222")
-
 $.ajax({
     type:"GET",
-    url: "/api/repos/getAll/",
+    url: "/api/posts/getAll/",
     dataType: 'json',
     success: function(data){
 
-        $(".result").html(`${data.length} Repository(s) Found`)
+        $(".result").html(`${data.length} Postsitory(s) Found`)
 
         $.each(data, function (index, value) {
-                $(".repo-container").append(
-                    `<div class="repo-item">
-                        <div class="repo-heading">
-                            <a href="/repo/${value.id}" target="_blank">${value.name}</a>
+                $(".post-container").append(
+                    `<div class="post-item">
+                        <div class="post-heading">
+                            <a href="/post/${value.id}" target="_blank">${value.name}</a>
                         </div>
-                        <div class="repo-description">${value.description}</div>
+                        <div class="post-description">${value.description}</div>
                     </div>`
                 )
             }
         )
 
-        var items = $(".repo-container .repo-item");
+        var items = $(".post-container .post-item");
         var numItems = items.length;
         var perPage = 6;
 

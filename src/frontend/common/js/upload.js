@@ -1,5 +1,5 @@
 let pageURL = $(location).attr('href');
-let repoId = pageURL.split("/").pop();
+let postId = pageURL.split("/").pop();
 
 
 $("#upload-form").on("submit", function(e){
@@ -9,7 +9,7 @@ $("#upload-form").on("submit", function(e){
     let file = $("#upload-file")[0].files[0];
     formData.append("file", file)
     formData.append("description", $("textarea").val())
-    formData.append("repoId", repoId)
+    formData.append("postId", postId)
 
     $.ajax({
 

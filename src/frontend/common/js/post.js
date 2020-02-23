@@ -5,22 +5,22 @@ let id = pageURL.split("/").pop();
 
 $.ajax({
     type:"POST",
-    url:"/api/repos/getById",
+    url:"/api/posts/getById",
     contentType: "text/plain",
     data: id,
-    success:function(repo){
-        let repoInfo =
+    success:function(post){
+        let postInfo =
             `
             <div class="header info">
-                <div class="title">${repo.name}</div>
+                <div class="title">${post.name}</div>
                 <div class="description-container">
-                    <div class="description">${repo.description}</div>
+                    <div class="description">${post.description}</div>
                 </div>
             </div>
             
             <div class="info">
                 <div class="title">
-                    <span>Dataset(s)</span><a href="/upload/${repo.id}">Upload</a> 
+                    <span>Dataset(s)</span><a href="/upload/${post.id}">Upload</a> 
                 </div>
                 <div class="dataset-item-container"></div>
             </div>
@@ -29,19 +29,19 @@ $.ajax({
                 <div class="dataset-name title"></div>
             </div>
             `
-        $("body").append(repoInfo)
+        $("body").append(postInfo)
 
-        getByRepoId(repo.id)
+        getByPostId(post.id)
     },
     error:function(error){
 
     }
 })
 
-function getByRepoId(id){
+function getByPostId(id){
     $.ajax({
         type: "POST",
-        url: "/api/datasets/getByRepoId",
+        url: "/api/datasets/getByPostId",
         contentType: "text/plain",
         data: id,
         success: function (datasets) {
@@ -87,7 +87,7 @@ function getByRepoId(id){
                         success: function(res){
                             if(res == "deleted"){
                                 $(".dataset-item-container").empty()
-                                getByRepoId(id)
+                                getByPostId(id)
                             }
                         },
                         error: function(error){

@@ -1,39 +1,43 @@
-version: "3"
+version: "3.2"
 
 services:
   frontend:
     build: ./src/frontend
     image: rickygeng97/microservicesapp_frontend
+    volumes: 
+      - ./src/frontend:/usr/share/nginx/html/frontend
+      - ./src/frontend/nginx.conf.COPY:/etc/nginx/nginx.conf
     ports:
       - 3002:3002
     depends_on:
       - postservice
     networks:
-      - local
+      - network1
   postservice:
     build: ./src/postservice
     image: rickygeng97/microservicesapp_postservice
+    volumes:
+      - type: volume
+        source: ./src/postservice/target/postservice-0.0.1-SNAPSHOT.jar
+        target: /usr/src/postservice/postservice.jar
+      - type: bind
+        source: ../datamart_storage
+        target: /storage
     ports:
       - 8082:8082
     depends_on:
       - dataprocessingservice
-      - mysqlserver
     networks:
-      - local
+      - network1
   dataprocessingservice:
     build: ./src/dataprocessingservice
     image: rickygeng97/microservicesapp_dataprocessingservice
+    volumes:
+      - ./src/dataprocessingservice:/usr/src/dataprocessingservice
     ports:
       - 5000:5000
     networks:
-      - local
-  mysqlserver:
-    build: ./src/mysqlserver
-    image: rickygeng97/microservicesapp_mysqlserver
-    ports:
-      - 3306:3306
-    networks:
-      - local
+      - network1
 networks:
-  local:
+  network1:
     driver: bridge

@@ -13,5 +13,5 @@ public class Dataset {
     private String name;
     private String description;
     private String type;
-    private String repoId;
+    private String postId;
 }

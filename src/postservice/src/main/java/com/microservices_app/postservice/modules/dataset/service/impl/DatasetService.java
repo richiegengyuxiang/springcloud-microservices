@@ -21,8 +21,8 @@ public class DatasetService implements IDatasetService {
     }
 
     @Override
-    public List<Dataset> getByRepoId(String id) {
-        return datasetMapper.getByRepoId(id);
+    public List<Dataset> getByPostId(String id) {
+        return datasetMapper.getByPostId(id);
     }
 
     @Override
@@ -31,10 +31,10 @@ public class DatasetService implements IDatasetService {
     }
 
     @Override
-    public void upload(String description, String dataType, String fileName, String repoId) {
+    public void upload(String description, String dataType, String fileName, String postId) {
 
         String id = UUID.randomUUID().toString();
-        datasetMapper.upload(id, description, dataType, fileName, repoId);
+        datasetMapper.upload(id, description, dataType, fileName, postId);
     }
 
     @Override

@@ -4,12 +4,12 @@ $("#upload-form").on("submit", function(e){
     e.preventDefault();
 
     let formData = new FormData();
-    formData.append("heading", $("#title").val())
+    formData.append("name", $("#title").val())
     formData.append("description", $("textarea").val())
 
     $.ajax({
         type:"POST",
-        url: "/api/requests/request",
+        url: "/api/posts/new",
         data: formData,
         processData: false,
         contentType: false,

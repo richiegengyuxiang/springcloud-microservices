@@ -8,7 +8,7 @@ public interface IDatasetService {
 
     List<Dataset> getAllDatasets();
 
-    List<Dataset> getByRepoId(String id);
+    List<Dataset> getByPostId(String id);
 
     Dataset getById(String id);
 
