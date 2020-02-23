@@ -19,18 +19,18 @@ public class PostController {
     private PostService postService;
 
     @RequestMapping("/getAll")
-    public List<Post> getAllPosts(){
+    public List<Post> getAllPosts() {
 
         final String uri = "http://dataprocessingservice:5000";
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri, String.class);
         System.out.println(result);
-        System.out.println("wwww");
+        System.out.println("444");
         return postService.getAllPosts();
     }
 
     @RequestMapping("/getById")
-    public Post getById(@RequestBody String id){
+    public Post getById(@RequestBody String id) {
         return postService.getById(id);
     }
 

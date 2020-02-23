@@ -76,7 +76,6 @@ public class DatasetController {
         Dataset dataset = datasetService.getById(id);
         String dataType = dataset.getType();
         String fileName = dataset.getName();
-        System.out.println("changed");
 
         File file = new File(storagePath + dataType + "/" + fileName);
         OutputStream os = response.getOutputStream();

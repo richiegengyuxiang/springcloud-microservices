@@ -6,7 +6,7 @@ services:
     image: rickygeng97/microservicesapp_frontend
     volumes: 
       - ./src/frontend:/usr/share/nginx/html/frontend
-      - ./src/frontend/nginx.conf.COPY:/etc/nginx/nginx.conf
+      - ./src/frontend/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 3002:3002
     depends_on:
@@ -18,8 +18,8 @@ services:
     image: rickygeng97/microservicesapp_postservice
     volumes:
       - type: volume
-        source: ./src/postservice/target/postservice-0.0.1-SNAPSHOT.jar
-        target: /usr/src/postservice/postservice.jar
+        source: ./src/postservice
+        target: /usr/src/postservice
       - type: bind
         source: ../datamart_storage
         target: /storage
