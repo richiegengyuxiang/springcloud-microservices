@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../common/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/authentication.css">
+    <link rel="stylesheet" type="text/css" href="../common/css/topNav.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+</head>
+
+<body>
+<div class="top-nav"></div>
+<div class="authentication-container">
+    <div class="header">Log In</div>
+    <form id="login-form">
+        <div class="caption">Email</div>
+        <input class="text-field" id="email-field" type="text" name="email"/>
+        <div class="caption">Password</div>
+        <input
+                class="text-field"
+                id="password-field"
+                type="password"
+                name="password"
+        />
+        <input class="submit-btn" type="submit" value="Log in"/>
+    </form>
+    <div class="redirect">
+        Don't have an account? <a href="../signup/signup.html">Sign Up</a>
+    </div>
+</div>
+
+<script src="../common/js/login.js"></script>
+
+</body>
+</html>

@@ -44,12 +44,12 @@ public class DatasetController {
 
     @RequestMapping("/upload")
     public void uploadDataset(@RequestParam(name = "file") MultipartFile file,
-                           @RequestParam(name = "postId") String postId,
-                           @RequestParam(name = "description") String description) throws IOException {
+                              @RequestParam(name = "postId") String postId,
+                              @RequestParam(name = "description") String description) throws IOException {
 
         String fileName = file.getOriginalFilename();
         String dataType = FilenameUtils.getExtension(fileName);
-        if(dataType.equals("")){
+        if (dataType.equals("")) {
             dataType = "txt";
         }
 
@@ -57,7 +57,7 @@ public class DatasetController {
         String filePath = directoryPath + "/" + fileName;
         File directory = new File(directoryPath);
 
-        if (! directory.exists()){
+        if (!directory.exists()) {
             directory.mkdir();
         }
         File uploadFile = new File(filePath);
