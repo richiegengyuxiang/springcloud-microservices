@@ -16,11 +16,8 @@ public class ChatController {
     @RequestMapping("/")
     public String getInfo() {
 
-        final String uri = "http://localhost:5000";
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri, String.class);
-
-        return chatService.getInfo(123456).toString() + result;
+//        return chatService.getInfo(123456).toString();
+        return "chat";
     }
 }
 

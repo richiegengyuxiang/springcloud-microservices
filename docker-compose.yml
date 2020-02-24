@@ -9,8 +9,6 @@ services:
       - ./src/frontend/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 3002:3002
-    depends_on:
-      - postservice
     networks:
       - network1
   postservice:
@@ -25,8 +23,6 @@ services:
         target: /storage
     ports:
       - 8082:8082
-    depends_on:
-      - dataprocessingservice
     networks:
       - network1
   chatservice:
