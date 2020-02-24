@@ -1,4 +1,4 @@
-# datamart_frontend
+# frontend
 
 ## Getting Started
 Before installing, download and install Node.js. Node.js 0.10 or higher is required.
