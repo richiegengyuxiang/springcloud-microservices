@@ -63,7 +63,7 @@ $("#signup-form").submit(function (event) {
     ) {
         $.ajax({
             type: "POST",
-            url: "http://localhost:5000/signup",
+            url: "/userserviceApi/signup",
             data: values,
             dataType: "json",
             success: function (res) {

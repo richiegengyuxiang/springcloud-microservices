@@ -6,4 +6,4 @@ COPY . .
 EXPOSE 8082
 EXPOSE 80 2222
 # CMD ["java","-jar","target/postservice-0.0.1-SNAPSHOT.jar"]
-CMD ["mvn","spring-boot:run"]
+CMD ["mvn", "spring-boot:run"]

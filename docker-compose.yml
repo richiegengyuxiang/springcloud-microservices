@@ -11,6 +11,17 @@ services:
       - 3002:3002
     networks:
       - network1
+  userservice:
+    build: ./src/userservice
+    image: rickygeng97/microservicesapp_userservice
+    volumes:
+      - type: volume
+        source: ./src/userservice
+        target: /usr/src/userservice
+    ports:
+      - 8081:8081
+    networks:
+      - network1
   postservice:
     build: ./src/postservice
     image: rickygeng97/microservicesapp_postservice

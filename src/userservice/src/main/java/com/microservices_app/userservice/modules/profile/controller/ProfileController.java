@@ -14,13 +14,9 @@ public class ProfileController {
     private ProfileService profileService;
 
     @RequestMapping("/")
-    public String getInfo(){
+    public String getInfo() {
 
-        final String uri = "http://localhost:5000";
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri, String.class);
-
-        return profileService.getInfo(123456).toString() + result;
+        return profileService.getInfo(123456).toString();
     }
 }
 
