@@ -29,6 +29,17 @@ services:
       - dataprocessingservice
     networks:
       - network1
+  chatservice:
+    build: ./src/chatservice
+    image: rickygeng97/microservicesapp_chatservice
+    volumes:
+      - type: volume
+        source: ./src/chatservice
+        target: /usr/src/chatservice
+    ports:
+      - 8083:8083
+    networks:
+      - network1
   dataprocessingservice:
     build: ./src/dataprocessingservice
     image: rickygeng97/microservicesapp_dataprocessingservice

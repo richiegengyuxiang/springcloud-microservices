@@ -3,7 +3,7 @@ $(".datasets-container").load("../components/datasetsContainer.html")
 
 $.ajax({
     type:"GET",
-    url: "/api/posts/getAll/",
+    url: "/postserviceApi/posts/getAll/",
     dataType: 'json',
     success: function(data){
 

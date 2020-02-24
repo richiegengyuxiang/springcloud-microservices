@@ -40,7 +40,7 @@ $("#upload-form").on("submit", function(e){
         },
 
         type:"POST",
-        url: "/api/datasets/upload",
+        url: "/postserviceApi/datasets/upload",
         data: formData,
         processData: false,
         contentType: false,

@@ -9,7 +9,7 @@ $("#upload-form").on("submit", function(e){
 
     $.ajax({
         type:"POST",
-        url: "/api/posts/new",
+        url: "/postserviceApi/posts/new",
         data: formData,
         processData: false,
         contentType: false,
