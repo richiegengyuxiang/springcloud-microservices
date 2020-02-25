@@ -1,6 +1,5 @@
 server:
   port: 8082
-
 spring:
   datasource:
     username: root
@@ -12,3 +11,9 @@ spring:
       max-file-size: 100MB
 mybatis:
   mapper-locations: classpath:com/microservices_app/postservice/**/xml/*Mapper.xml
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://172.17.0.1:8761/eureka/
+    instance:
+      preferIpAddress: true

@@ -11,6 +11,17 @@ services:
       - 3002:3002
     networks:
       - network1
+  eurekaserver:
+    build: ./src/eurekaserver
+    image: rickygeng97/microservicesapp_eurekaserver
+    volumes:
+      - type: volume
+        source: ./src/eurekaserver
+        target: /usr/src/eurekaserver
+    ports:
+      - 8761:8761
+    networks:
+      - network1
   userservice:
     build: ./src/userservice
     image: rickygeng97/microservicesapp_userservice
@@ -20,6 +31,8 @@ services:
         target: /usr/src/userservice
     ports:
       - 8081:8081
+    depends_on:
+      - eurekaserver
     networks:
       - network1
   postservice:
@@ -34,6 +47,8 @@ services:
         target: /storage
     ports:
       - 8082:8082
+    depends_on:
+      - eurekaserver
     networks:
       - network1
   chatservice:
@@ -45,6 +60,8 @@ services:
         target: /usr/src/chatservice
     ports:
       - 8083:8083
+    depends_on:
+      - eurekaserver
     networks:
       - network1
   dataprocessingservice:

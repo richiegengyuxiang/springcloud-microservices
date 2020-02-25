@@ -1,10 +1,10 @@
-package com.microservices_app.postservice;
+package com.microservices_app.eurekaserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PostserviceApplicationTests {
+class EurekaserverApplicationTests {
 
     @Test
     void contextLoads() {
