@@ -6,7 +6,7 @@ let question = searchParams.get('q')
 
 $.ajax({
     type:"POST",
-    url: "/postserviceApi/search/",
+    url: "/zuulserverApi/search/",
     data: question,
     processData: false,
     contentType: false,

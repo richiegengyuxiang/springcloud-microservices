@@ -5,7 +5,7 @@ let id = pageURL.split("/").pop();
 
 $.ajax({
     type:"POST",
-    url:"/postserviceApi/posts/getById",
+    url:"/zuulserverApi/posts/getById",
     contentType: "text/plain",
     data: id,
     success:function(post){
@@ -41,7 +41,7 @@ $.ajax({
 function getByPostId(id){
     $.ajax({
         type: "POST",
-        url: "/postserviceApi/datasets/getByPostId",
+        url: "/zuulserverApi/datasets/getByPostId",
         contentType: "text/plain",
         data: id,
         success: function (datasets) {
@@ -73,7 +73,7 @@ function getByPostId(id){
                     e.stopImmediatePropagation();
 
                     e.preventDefault();
-                    window.location.href = "/postserviceApi/datasets/fileDownload/" + value.id
+                    window.location.href = "/zuulserverApi/datasets/fileDownload/" + value.id
                 })
 
                 $(".delete-btn").click(function (e) {
@@ -81,7 +81,7 @@ function getByPostId(id){
                     e.preventDefault();
                     $.ajax({
                         type:"POST",
-                        url:"/postserviceApi/datasets/deleteById",
+                        url:"/zuulserverApi/datasets/deleteById",
                         contentType: "text/plain",
                         data: value.id,
                         success: function(res){
@@ -113,17 +113,17 @@ function displayData(value) {
     }else if(["wav", "mp3"].includes(value.type)){
         $(".data-display").append(`
             <audio controls>
-                <source src="/postserviceApi/datasets/fileDownload/${value.id}">
+                <source src="/zuulserverApi/datasets/fileDownload/${value.id}">
             </audio>
         `)
     }else if(["jpg", "png", "jpeg"].includes(value.type)){
         $(".data-display").append(`
-            <img src="/postserviceApi/datasets/fileDownload/${value.id}">
+            <img src="/zuulserverApi/datasets/fileDownload/${value.id}">
         `)
     }else if(["mp4"].includes(value.type)){
         $(".data-display").append(`
             <video width="400" controls>
-                <source src="/postserviceApi/datasets/fileDownload/${value.id}" type="video/mp4">
+                <source src="/zuulserverApi/datasets/fileDownload/${value.id}" type="video/mp4">
             </video>
         `)
     }
@@ -159,7 +159,7 @@ function displayData(value) {
             },
 
             type: "POST",
-            url: "/postserviceApi/datasets/fileDownload/" + data.id,
+            url: "/zuulserverApi/datasets/fileDownload/" + data.id,
             data: data.id,
             processData: false,
             contentType: false,

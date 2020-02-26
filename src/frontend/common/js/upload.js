@@ -40,7 +40,7 @@ $("#upload-form").on("submit", function(e){
         },
 
         type:"POST",
-        url: "/postserviceApi/datasets/upload",
+        url: "/zuulserverApi/datasets/upload",
         data: formData,
         processData: false,
         contentType: false,

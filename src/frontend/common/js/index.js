@@ -2,10 +2,10 @@ $(".top-nav").load("../components/topNav.html")
 $(".datasets-container").load("../components/datasetsContainer.html")
 
 $.ajax({
-    type:"GET",
-    url: "/postserviceApi/posts/getAll/",
+    type: "GET",
+    url: "/zuulserverApi/posts/getAll/",
     dataType: 'json',
-    success: function(data){
+    success: function (data) {
 
         $(".result").html(`${data.length} Postsitory(s) Found`)
 

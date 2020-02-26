@@ -9,6 +9,31 @@ services:
       - ./src/frontend/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 3002:3002
+    depends_on:
+      - zuulserver
+      - eurekaserver
+      - userservice
+      - postservice
+      - chatservice
+    networks:
+      - network1
+  zuulserver:
+    build: ./src/zuulserver
+    image: rickygeng97/microservicesapp_zuulserver
+    volumes:
+      - type: volume
+        source: ./src/zuulserver
+        target: /usr/src/zuulserver
+    ports:
+      - 8762:8762
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://172.17.0.1:8762/"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      - eurekaserver
     networks:
       - network1
   eurekaserver:
@@ -20,6 +45,12 @@ services:
         target: /usr/src/eurekaserver
     ports:
       - 8761:8761
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://172.17.0.1:8761/"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
     networks:
       - network1
   userservice:
@@ -31,6 +62,7 @@ services:
         target: /usr/src/userservice
     ports:
       - 8081:8081
+    restart: on-failure
     depends_on:
       - eurekaserver
     networks:
@@ -47,6 +79,7 @@ services:
         target: /storage
     ports:
       - 8082:8082
+    restart: on-failure
     depends_on:
       - eurekaserver
     networks:
@@ -60,6 +93,7 @@ services:
         target: /usr/src/chatservice
     ports:
       - 8083:8083
+    restart: on-failure
     depends_on:
       - eurekaserver
     networks:
