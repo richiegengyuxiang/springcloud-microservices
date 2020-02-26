@@ -44,7 +44,7 @@ conectWebSocket()
 function conectWebSocket() {
     //判断当前浏览器是否支持WebSocket
     if ('WebSocket' in window) {
-        websocket = new WebSocket("ws://127.0.0.1:8083/websocket");
+        websocket = new WebSocket("ws://172.17.0.1:8083/websocket");
         console.log("websocket")
     } else {
         alert('Not support websocket')

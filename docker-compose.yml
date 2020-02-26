@@ -1,6 +1,16 @@
 version: "3.2"
 
 services:
+  nginxloadbalancer:
+    build: ./src/nginxloadbalancer
+    image: rickygeng97/microservicesapp_nginxloadbalancer
+    volumes: 
+      - ./src/nginxloadbalancer/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+    restart: always
+    networks:
+      - network1
   frontend:
     build: ./src/frontend
     image: rickygeng97/microservicesapp_frontend
@@ -9,6 +19,7 @@ services:
       - ./src/frontend/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 3002:3002
+    restart: always
     depends_on:
       - zuulserver
       - eurekaserver
@@ -62,7 +73,7 @@ services:
         target: /usr/src/userservice
     ports:
       - 8081:8081
-    restart: on-failure
+    restart: always
     depends_on:
       - eurekaserver
     networks:
@@ -79,7 +90,7 @@ services:
         target: /storage
     ports:
       - 8082:8082
-    restart: on-failure
+    restart: always
     depends_on:
       - eurekaserver
     networks:
@@ -93,7 +104,7 @@ services:
         target: /usr/src/chatservice
     ports:
       - 8083:8083
-    restart: on-failure
+    restart: always
     depends_on:
       - eurekaserver
     networks:
