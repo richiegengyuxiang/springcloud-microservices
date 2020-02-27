@@ -16,11 +16,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/signup")
+    public String signup(@RequestBody Map<String, Object> signupField) {
+        return userService.signup(signupField);
+    }
+
     @RequestMapping("/login")
     public String login(@RequestBody Map<String, Object> loginFields) {
-        System.out.println(loginFields);
-//        return userService.login();
-        return null;
+        return userService.login(loginFields);
     }
 }
 

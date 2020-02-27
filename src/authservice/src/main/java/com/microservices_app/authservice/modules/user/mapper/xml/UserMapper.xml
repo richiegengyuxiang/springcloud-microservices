@@ -5,4 +5,9 @@
     <select id="getInfo" resultType="com.microservices_app.userservice.modules.user.entity.User">
         SELECT * FROM Users WHERE id = #{id}
     </select>
+
+    <insert id="signup">
+        INSERT INTO Users (id, username, email, password) VALUES (#{id}, #{username}, #{email}, #{password})
+    </insert>
+
 </mapper>

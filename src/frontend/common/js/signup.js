@@ -12,7 +12,6 @@ function validatePassword(password) {
 
 $("#signup-form").submit(function (event) {
     event.preventDefault();
-
     // Get all inputs and store as values object.
     var values = {};
     $(".text-field").each(function () {
@@ -63,8 +62,9 @@ $("#signup-form").submit(function (event) {
     ) {
         $.ajax({
             type: "POST",
-            url: "/userserviceApi/signup",
-            data: values,
+            contentType: "application/json",
+            url: "/zuulserverApi/auth/signup",
+            data: JSON.stringify(values),
             dataType: "json",
             success: function (res) {
                 if (res.error == "email already exists") {
