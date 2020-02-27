@@ -22,6 +22,18 @@
     text-decoration: underline;
 }
 
+.auth {
+    float: right;
+}
+
+.login, .signup {
+    border: 1px solid grey;
+}
+
+.login:hover, signup:hover {
+    text-decoration: none;
+}
+
 .search-bar {
     display: inline-block;
     margin: 0 0 0 0.6em;

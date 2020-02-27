@@ -3,7 +3,7 @@ $(".datasets-container").load("../components/datasetsContainer.html")
 
 $.ajax({
     type: "GET",
-    url: "/zuulserverApi/posts/getAll/",
+    url: "/zuulserverApi/posts/getAll",
     dataType: 'json',
     success: function (data) {
 

@@ -17,6 +17,10 @@ management:
 zuul:
   ignored-services: "*"
   routes:
+    auth:
+      stripPrefix: false
+      path: /auth/**
+      serviceId: authservice
     posts:
       stripPrefix: false
       path: /posts/**

@@ -33,8 +33,9 @@ $("#login-form").submit(function (event) {
     if (values["email"] != "" && values["password"] != "") {
         $.ajax({
             type: "POST",
-            url: "http://localhost:5000/login",
-            data: values,
+            contentType: 'application/json',
+            url: "/zuulserverApi/auth/login",
+            data: JSON.stringify(values),
             dataType: "json",
             success: function (res) {
                 if (res.error == "email doesnt exist") {
