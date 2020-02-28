@@ -36,7 +36,7 @@ $("#login-form").submit(function (event) {
             contentType: 'application/json',
             url: "/zuulserverApi/auth/login",
             data: JSON.stringify(values),
-            dataType: "json",
+            dataType: "text",
             success: function (res) {
                 if (res.error == "email doesnt exist") {
                     $("#email-field").css("border", "2px solid red");

@@ -65,25 +65,25 @@ $("#signup-form").submit(function (event) {
             contentType: "application/json",
             url: "/zuulserverApi/auth/signup",
             data: JSON.stringify(values),
-            dataType: "json",
+            dataType: "text",
             success: function (res) {
-                if (res.error == "email already exists") {
+                console.log("res", res)
+                if (res == "success") {
+                    alert("success")
+                } else if (res == "email already exists") {
                     $("#email-field").css("border", "2px solid red");
                     if ($("#email-exist").length == 0) {
                         $(
                             "<div class='error' id='email-exist'>Error: Email already exists.</div>"
                         ).insertAfter("#email-field");
                     }
-                } else if (res.error == "username already exists") {
+                } else if (res == "username already exists") {
                     $("#username-field").css("border", "2px solid red");
                     if ($("#username-exist").length == 0) {
                         $(
                             "<div class='error' id='username-exist'>Error: Username already exists.</div>"
                         ).insertAfter("#username-field");
                     }
-                } else {
-                    localStorage.setItem("user", JSON.stringify(res.user));
-                    location.href = "../feed/feed.html";
                 }
             }
         });

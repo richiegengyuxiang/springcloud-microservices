@@ -1,6 +1,7 @@
 package com.microservices_app.authservice.modules.user.mapper;
 
 import com.microservices_app.authservice.modules.user.entity.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Map;
@@ -12,5 +13,6 @@ public interface IUserMapper {
 
     String login(Map<String, Object> loginFields);
 
-    String signup(Map<String, Object> signupField);
+    void signup(@Param("id") String id, @Param("username") String username, @Param("email") String email, @Param("password") String password);
+
 }
