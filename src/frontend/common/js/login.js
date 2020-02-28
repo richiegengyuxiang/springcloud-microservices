@@ -38,6 +38,9 @@ $("#login-form").submit(function (event) {
             data: JSON.stringify(values),
             dataType: "text",
             success: function (res) {
+
+                alert(res)
+
                 if (res.error == "email doesnt exist") {
                     $("#email-field").css("border", "2px solid red");
                     if ($("#email-exist").length == 0) {
@@ -54,7 +57,6 @@ $("#login-form").submit(function (event) {
                     }
                 } else {
                     localStorage.setItem("user", JSON.stringify(res.user));
-                    location.href = "../feed/feed.html";
                 }
             },
             error: function (result) {

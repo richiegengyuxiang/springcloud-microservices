@@ -31,20 +31,16 @@ public class UserService implements IUserService {
         User user = new User();
 
         String id = UUID.randomUUID().toString();
-        user.setId(id);
         String username = (String) signupField.get("username");
-        user.setUsername(username);
         String email = (String) signupField.get("email");
-        user.setEmail(email);
         String password = (String) signupField.get("password");
-        user.setPassword(password);
+        String passwordEncoded = passwordEncoder.encode(password);
 
         try {
-            userMapper.signup(user.getId(), user.getUsername(), user.getEmail(), user.getPassword());
+            userMapper.signup(id, username, email, passwordEncoded);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-
             String jwt = jwtUtil.generateToken(user);
             return jwt;
         }
@@ -53,6 +49,21 @@ public class UserService implements IUserService {
 
     @Override
     public String login(Map<String, Object> loginFields) {
-        return userMapper.login(loginFields);
+
+        String email = (String) loginFields.get("email");
+        String password = (String) loginFields.get("password");
+
+        User user = new User();
+        try {
+            user = userMapper.login(email, password);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (passwordEncoder.matches(password, user.getPassword()) == true) {
+                return "success";
+            }
+
+            return "failure";
+        }
     }
 }

@@ -67,7 +67,7 @@ $("#signup-form").submit(function (event) {
             data: JSON.stringify(values),
             dataType: "text",
             success: function (res) {
-                console.log("res", res)
+                alert(res)
                 if (res == "success") {
                     alert("success")
                 } else if (res == "email already exists") {

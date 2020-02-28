@@ -11,7 +11,7 @@ public interface IUserMapper {
 
     User getInfo(int id);
 
-    String login(Map<String, Object> loginFields);
+    User login(String email, String password);
 
     void signup(@Param("id") String id, @Param("username") String username, @Param("email") String email, @Param("password") String password);
 
