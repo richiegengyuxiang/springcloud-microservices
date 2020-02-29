@@ -1,6 +1,6 @@
 $(".top-nav").load("../components/topNav.html")
 $(".datasets-container").load("../components/datasetsContainer.html")
-
+// localStorage.clear()
 $.ajax({
     type: "GET",
     url: "/zuulserverApi/posts/getAll",
@@ -43,3 +43,7 @@ $.ajax({
         console.log(error)
     }
 })
+
+
+
+

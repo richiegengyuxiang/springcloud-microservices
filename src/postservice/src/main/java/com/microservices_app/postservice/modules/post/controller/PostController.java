@@ -21,10 +21,10 @@ public class PostController {
     @RequestMapping("/getAll")
     public List<Post> getAllPosts() {
 
-        final String uri = "http://dataprocessingservice:5000";
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(uri, String.class);
-        System.out.println(result);
+//        final String uri = "http://dataprocessingservice:5000";
+//        RestTemplate restTemplate = new RestTemplate();
+//        String result = restTemplate.getForObject(uri, String.class);
+//        System.out.println(result);
         return postService.getAllPosts();
     }
 

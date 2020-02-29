@@ -22,11 +22,6 @@ public class UserService implements IUserService {
     private JwtUtil jwtUtil;
 
     @Override
-    public User getInfo(int id) {
-        return userMapper.getInfo(id);
-    }
-
-    @Override
     public String signup(Map<String, Object> signupField) {
         User user = new User();
 
@@ -35,6 +30,15 @@ public class UserService implements IUserService {
         String email = (String) signupField.get("email");
         String password = (String) signupField.get("password");
         String passwordEncoded = passwordEncoder.encode(password);
+
+
+        if (userMapper.checkIfEmailExists(email) != null) {
+            return "The email already exists";
+        }
+
+        if (userMapper.checkIfUsernameExists(username) != null) {
+            return "The username already exists";
+        }
 
         try {
             userMapper.signup(id, username, email, passwordEncoded);
@@ -60,7 +64,8 @@ public class UserService implements IUserService {
             e.printStackTrace();
         } finally {
             if (passwordEncoder.matches(password, user.getPassword()) == true) {
-                return "success";
+                String jwt = jwtUtil.generateToken(user);
+                return jwt;
             }
 
             return "failure";

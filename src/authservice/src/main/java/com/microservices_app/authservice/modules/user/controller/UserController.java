@@ -1,6 +1,5 @@
 package com.microservices_app.authservice.modules.user.controller;
 
-import com.microservices_app.authservice.modules.user.entity.User;
 import com.microservices_app.authservice.modules.user.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

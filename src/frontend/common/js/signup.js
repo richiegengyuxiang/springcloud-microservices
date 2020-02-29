@@ -68,9 +68,7 @@ $("#signup-form").submit(function (event) {
             dataType: "text",
             success: function (res) {
                 alert(res)
-                if (res == "success") {
-                    alert("success")
-                } else if (res == "email already exists") {
+                if (res == "email already exists") {
                     $("#email-field").css("border", "2px solid red");
                     if ($("#email-exist").length == 0) {
                         $(
@@ -84,6 +82,8 @@ $("#signup-form").submit(function (event) {
                             "<div class='error' id='username-exist'>Error: Username already exists.</div>"
                         ).insertAfter("#username-field");
                     }
+                } else {
+                    localStorage.setItem("user", res);
                 }
             }
         });

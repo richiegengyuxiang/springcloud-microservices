@@ -1,6 +1,6 @@
-package com.microservices_app.authservice.modules.user.util;
+package com.microservices_app.userservice.modules.user.util;
 
-import com.microservices_app.authservice.modules.user.entity.User;
+import com.microservices_app.userservice.modules.user.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

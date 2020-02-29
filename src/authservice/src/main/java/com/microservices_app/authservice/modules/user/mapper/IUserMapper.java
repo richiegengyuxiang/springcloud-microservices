@@ -9,10 +9,11 @@ import java.util.Map;
 @Repository
 public interface IUserMapper {
 
-    User getInfo(int id);
-
     User login(String email, String password);
 
-    void signup(@Param("id") String id, @Param("username") String username, @Param("email") String email, @Param("password") String password);
+    User checkIfEmailExists(String email);
 
+    void signup(String id, String username, String email, String password);
+
+    User checkIfUsernameExists(String username);
 }

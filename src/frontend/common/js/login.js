@@ -56,7 +56,7 @@ $("#login-form").submit(function (event) {
                         ).insertAfter("#password-field");
                     }
                 } else {
-                    localStorage.setItem("user", JSON.stringify(res.user));
+                    localStorage.setItem("user", res);
                 }
             },
             error: function (result) {

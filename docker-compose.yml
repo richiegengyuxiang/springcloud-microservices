@@ -45,6 +45,9 @@ services:
       retries: 5
     depends_on:
       - eurekaserver
+      - userservice
+      - postservice
+      - chatservice
     networks:
       - network1
   eurekaserver:
