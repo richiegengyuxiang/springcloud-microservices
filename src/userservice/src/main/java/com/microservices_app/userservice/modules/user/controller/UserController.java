@@ -19,5 +19,10 @@ public class UserController {
         return userService.getUserInfoByJwt(jwt);
     }
 
+    @RequestMapping("/getUserInfoById")
+    public User getUserInfoById(@RequestBody String id) {
+        return userService.getUserInfoById(id);
+    }
+
 }
 

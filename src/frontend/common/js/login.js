@@ -42,18 +42,18 @@ $("#login-form").submit(function (event) {
                 alert(res)
 
                 if (res.error == "email doesnt exist") {
-                    $("#email-field").css("border", "2px solid red");
+                    $(".email-field").css("border", "2px solid red");
                     if ($("#email-exist").length == 0) {
                         $(
                             "<div class='error' id='email-exist'>Error: Email doesn't exist.</div>"
-                        ).insertAfter("#email-field");
+                        ).insertAfter(".email-field");
                     }
                 } else if (res.error == "password is incorrect") {
-                    $("#password-field").css("border", "2px solid red");
+                    $(".password-field").css("border", "2px solid red");
                     if ($("#password-exist").length == 0) {
                         $(
                             "<div class='error' id='password-exist'>Error: Password is incorrect.</div>"
-                        ).insertAfter("#password-field");
+                        ).insertAfter(".password-field");
                     }
                 } else {
                     localStorage.setItem("user", res);

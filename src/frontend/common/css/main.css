@@ -9,3 +9,12 @@ body {
 html {
     background: #f4f4f4;
 }
+
+.submit-btn {
+    border: none;
+    background: #ff9a00;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    display: inline-block;
+}

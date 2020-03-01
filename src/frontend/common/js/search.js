@@ -1,33 +1,23 @@
 $(".top-nav").load("../components/topNav.html")
-$(".datasets-container").load("../components/datasetsContainer.html")
+$(".posts-container").load("../components/datasetsContainer.html")
 
 let searchParams = new URLSearchParams(window.location.search)
 let question = searchParams.get('q')
 
 $.ajax({
-    type:"POST",
+    type: "POST",
     url: "/zuulserverApi/search/",
     data: question,
     processData: false,
     contentType: false,
-    dataType : 'json',
-    success : function(data) {
+    dataType: 'json',
+    success: function (data) {
 
         $(".result").html(`${data.length} Postsitory(s) Found`)
 
-        $.each(data, function (index, value) {
-                $(".post-container").append(
-                    `<div class="post-item">
-                        <div class="post-heading">
-                            <a href="/post/${value.id}" target="_blank">${value.name}</a>
-                        </div>
-                        <div class="post-description">${value.description}</div>
-                    </div>`
-                )
-            }
-        )
+        loadPostItems(data)
     },
-    error: function(error){
+    error: function (error) {
         console.log(error);
     }
 })

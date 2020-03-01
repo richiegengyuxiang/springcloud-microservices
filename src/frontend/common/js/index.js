@@ -1,6 +1,6 @@
 $(".top-nav").load("../components/topNav.html")
-$(".datasets-container").load("../components/datasetsContainer.html")
-// localStorage.clear()
+$(".posts-container").load("../components/datasetsContainer.html")
+
 $.ajax({
     type: "GET",
     url: "/zuulserverApi/posts/getAll",
@@ -9,17 +9,7 @@ $.ajax({
 
         $(".result").html(`${data.length} Postsitory(s) Found`)
 
-        $.each(data, function (index, value) {
-                $(".post-container").append(
-                    `<div class="post-item">
-                        <div class="post-heading">
-                            <a href="/post/${value.id}" target="_blank">${value.name}</a>
-                        </div>
-                        <div class="post-description">${value.description}</div>
-                    </div>`
-                )
-            }
-        )
+        loadPostItems(data)
 
         var items = $(".post-container .post-item");
         var numItems = items.length;

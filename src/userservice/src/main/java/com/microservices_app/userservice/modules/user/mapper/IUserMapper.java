@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IUserMapper {
 
-    User loadUserByUsername(String username);
+    User getUserByUsername(String username);
+
+    User getUserInfoById(String id);
 }

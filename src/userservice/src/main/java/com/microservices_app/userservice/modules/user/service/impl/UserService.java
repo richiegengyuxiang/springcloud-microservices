@@ -18,8 +18,8 @@ public class UserService implements IUserService {
     @Override
     public User getUserInfoByJwt(String jwt) {
         String username = jwtUtil.extractUsername(jwt);
-
-        User user = loadUserByUsername(username);
+        System.out.println(jwt);
+        User user = getUserByUsername(username);
         System.out.println(user);
         if (jwtUtil.validateToken(jwt, user)) {
             return user;
@@ -28,7 +28,13 @@ public class UserService implements IUserService {
         return null;
     }
 
-    public User loadUserByUsername(String username) {
-        return userMapper.loadUserByUsername(username);
+    @Override
+    public User getUserInfoById(String id) {
+        return userMapper.getUserInfoById(id);
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return userMapper.getUserByUsername(username);
     }
 }

@@ -6,40 +6,32 @@
     box-shadow: 0 1px 1px -1px gray;
 }
 
-.top-nav-inner {
+#top-nav-inner {
     margin: auto;
 }
 
-.top-nav-inner a {
+#top-nav-inner a {
     display: inline-block;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 16px;
     padding: 32px 12px;
     color: black;
 }
 
-.top-nav-inner a:hover {
-    text-decoration: underline;
+#top-nav-inner a:hover {
+    background: #eeeeee;
 }
 
 .auth {
     float: right;
 }
 
-.login, .signup {
-    border: 1px solid grey;
-}
-
-.login:hover, signup:hover {
-    text-decoration: none;
-}
-
-.search-bar {
+#top-nav-inner .search-bar {
     display: inline-block;
     margin: 0 0 0 0.6em;
 }
 
-.search {
+.search-input {
     height: 32px;
     min-width: 500px;
     border: 2px solid #ff9a00;
@@ -49,17 +41,8 @@
     display: inline-block;
 }
 
-.search-btn {
-    border: none;
-    background: #ff9a00;
-    color: white;
-    font-size: 16px;
-    padding: 10px;
-    display: inline-block;
-}
-
 @media only screen and (max-width: 1400px) {
-    .top-nav-inner {
+    #top-nav-inner {
         white-space: nowrap;
         width: 100%;
         overflow-x: scroll;

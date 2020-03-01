@@ -40,18 +40,18 @@ $("#signup-form").submit(function (event) {
 
     // Check if email & password are valid.
     if (values["email"] != "" && !validateEmail(values["email"])) {
-        $("#email-field").css("border", "2px solid red");
+        $(".email-field").css("border", "2px solid red");
         $(
             "<div class='error' id='email-invalid'>Error: Email is invalid format.</div>"
-        ).insertAfter($("#email-field"));
+        ).insertAfter($(".email-field"));
         return;
     }
 
     if (values["password"] != "" && !validatePassword(values["password"])) {
-        $("#password-field").css("border", "2px solid red");
+        $(".password-field").css("border", "2px solid red");
         $(
             "<div class='error' id='password-invalid'>Error: Password is invalid format.</div>"
-        ).insertAfter($("#password-field"));
+        ).insertAfter($(".password-field"));
         return;
     }
 
@@ -69,18 +69,18 @@ $("#signup-form").submit(function (event) {
             success: function (res) {
                 alert(res)
                 if (res == "email already exists") {
-                    $("#email-field").css("border", "2px solid red");
+                    $(".email-field").css("border", "2px solid red");
                     if ($("#email-exist").length == 0) {
                         $(
                             "<div class='error' id='email-exist'>Error: Email already exists.</div>"
-                        ).insertAfter("#email-field");
+                        ).insertAfter(".email-field");
                     }
                 } else if (res == "username already exists") {
-                    $("#username-field").css("border", "2px solid red");
+                    $(".username-field").css("border", "2px solid red");
                     if ($("#username-exist").length == 0) {
                         $(
                             "<div class='error' id='username-exist'>Error: Username already exists.</div>"
-                        ).insertAfter("#username-field");
+                        ).insertAfter(".username-field");
                     }
                 } else {
                     localStorage.setItem("user", res);

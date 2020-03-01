@@ -31,6 +31,10 @@ public class UserService implements IUserService {
         String password = (String) signupField.get("password");
         String passwordEncoded = passwordEncoder.encode(password);
 
+        user.setId(id);
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setPassword(passwordEncoded);
 
         if (userMapper.checkIfEmailExists(email) != null) {
             return "The email already exists";

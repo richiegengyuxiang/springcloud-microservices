@@ -1,4 +1,4 @@
-.container {
+.posts-container-inner {
     max-width: 800px;
     margin: 100px auto;
     border: 1px solid #C0C0C0;
@@ -12,7 +12,7 @@
 }
 
 .result {
-    float:left;
+    float: left;
 }
 
 .post-container {
@@ -20,7 +20,7 @@
 }
 
 #filter {
-    float:right;
+    float: right;
 }
 
 @media only screen and (max-width: 600px) {

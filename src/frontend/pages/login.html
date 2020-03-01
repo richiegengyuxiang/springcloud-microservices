@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
 
-    <title></title>
     <link rel="stylesheet" type="text/css" href="../common/css/main.css">
     <link rel="stylesheet" type="text/css" href="../common/css/authentication.css">
     <link rel="stylesheet" type="text/css" href="../common/css/topNav.css">
@@ -18,23 +18,23 @@
 <div class="top-nav"></div>
 <div class="authentication-container">
     <div class="header">Log In</div>
-    <form id="login-form">
-        <div class="caption">Email</div>
-        <input class="text-field" id="email-field" type="text" name="email"/>
-        <div class="caption">Password</div>
+    <form id="login-form" class="authentication-form">
+        <label>Email</label>
+        <input class="text-field email-field" type="text" name="email"/>
+        <label>Password</label>
         <input
-                class="text-field"
-                id="password-field"
+                class="text-field password-field"
                 type="password"
                 name="password"
         />
         <input class="submit-btn" type="submit" value="Log in"/>
     </form>
     <div class="redirect">
-        Don't have an account? <a href="../signup/signup.html">Sign Up</a>
+        Don't have an account? <a href="/signup/">Sign Up</a>
     </div>
 </div>
 
+<script src="../common/js/topNav.js"></script>
 <script src="../common/js/login.js"></script>
 
 </body>

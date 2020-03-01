@@ -14,7 +14,7 @@ $(document).ready(function () {
             url: "/zuulserverApi/user/getUserInfoByJwt",
             data: jwt,
             success: function (res) {
-                $(".top-nav-inner").append(
+                $("#top-nav-inner").append(
                     `
                     <a href="" class="auth user">
                         ${res.username}
@@ -23,9 +23,8 @@ $(document).ready(function () {
                 )
 
                 $(".user").click(function (e) {
-                    // e.preventDefault()
-
-                    localStorage.clear()
+                    e.preventDefault()
+                    window.location.href = `/user/${res.username}`
                 })
             },
             error: function (error) {
@@ -34,7 +33,7 @@ $(document).ready(function () {
         })
 
     } else {
-        $(".top-nav-inner").append(
+        $("#top-nav-inner").append(
             `
         <a href="/login/" class="auth login">
             Log in
