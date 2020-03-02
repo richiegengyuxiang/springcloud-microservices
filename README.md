@@ -8,11 +8,12 @@ General purpose microservice architecture for modern web application.
 * NPM: Package manager
 * Nginx: Serving statics files, reverse proxy for backend, load balancing
 ### Backend
-* Spring Boot: Basic java framework
-* Mybatis: Persistence java framework
-* Redis Caching
-* Eureka: Load balancing
-* Zuul: API gateway
+* Spring Boot: Basic framework
+* Mybatis: Persistence framework
+* Redis: Caching
+* Netflix Eureka: Load balancing
+* Netflix Zuul: API gateway
+* Flask
 ### DB
 * MySQL
 ### Devops
@@ -21,6 +22,6 @@ General purpose microservice architecture for modern web application.
 
 ![Alt](microservices_architecture.png)
 
-# Set up
+## Set up
 * Install docker and docker compose
 * Under `/microservices_app` directory, run `sudo docker-compose up` to build all docker images and run containers.

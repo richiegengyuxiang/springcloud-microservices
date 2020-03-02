@@ -11,13 +11,13 @@ $.ajax({
     processData: false,
     contentType: false,
     dataType: 'json',
-    success: function (data) {
+    success (data) {
 
         $(".result").html(`${data.length} Postsitory(s) Found`)
 
         loadPostItems(data)
     },
-    error: function (error) {
+    error (error) {
         console.log(error);
     }
 })

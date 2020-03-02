@@ -1,3 +1,5 @@
+@import "theme";
+
 .simple-pagination ul {
   padding: 0;
   list-style: none;
@@ -26,7 +28,5 @@
 
 .simple-pagination .prev.current,
 .simple-pagination .next.current {
-  background: #ff9a00;
+  background: $base-color;
 }
-
-/*# sourceMappingURL=pagination.css.map */

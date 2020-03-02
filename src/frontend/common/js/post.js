@@ -4,11 +4,11 @@ let pageURL = $(location).attr('href');
 let id = pageURL.split("/").pop();
 
 $.ajax({
-    type:"POST",
-    url:"/zuulserverApi/posts/getById",
+    type: "POST",
+    url: "/zuulserverApi/posts/getById",
     contentType: "text/plain",
     data: id,
-    success:function(post){
+    success(post) {
         let postInfo =
             `
             <div class="header info">
@@ -33,18 +33,18 @@ $.ajax({
 
         getByPostId(post.id)
     },
-    error:function(error){
+    error (error) {
 
     }
 })
 
-function getByPostId(id){
+function getByPostId(id) {
     $.ajax({
         type: "POST",
         url: "/zuulserverApi/datasets/getByPostId",
         contentType: "text/plain",
         data: id,
-        success: function (datasets) {
+        success(datasets) {
             $.each(datasets, function (index, value) {
 
                 let datasetInfo =
@@ -57,7 +57,7 @@ function getByPostId(id){
                 $(".dataset-item-container").append(datasetInfo);
 
                 // Click to display clicked dataset
-                $(".dataset-item").click(function(e){
+                $(".dataset-item").click(function (e) {
                     e.stopImmediatePropagation();
                     $(".data-display").empty();
 
@@ -80,17 +80,17 @@ function getByPostId(id){
                     e.stopImmediatePropagation();
                     e.preventDefault();
                     $.ajax({
-                        type:"POST",
-                        url:"/zuulserverApi/datasets/deleteById",
+                        type: "POST",
+                        url: "/zuulserverApi/datasets/deleteById",
                         contentType: "text/plain",
                         data: value.id,
-                        success: function(res){
-                            if(res == "deleted"){
+                        success(res) {
+                            if (res == "deleted") {
                                 $(".dataset-item-container").empty()
                                 getByPostId(id)
                             }
                         },
-                        error: function(error){
+                        error (error) {
                             console.log(error)
                         }
                     })
@@ -101,26 +101,26 @@ function getByPostId(id){
             $(".dataset-item:eq(0)").attr("class", "dataset-item active")
 
         },
-        error: function (error) {
+        error (error) {
             console.log(error)
         }
     })
 }
 
 function displayData(value) {
-    if(["csv", "txt"].includes(value.type)){
+    if (["csv", "txt"].includes(value.type)) {
         fetchCSVAsString(value);
-    }else if(["wav", "mp3"].includes(value.type)){
+    } else if (["wav", "mp3"].includes(value.type)) {
         $(".data-display").append(`
             <audio controls>
                 <source src="/zuulserverApi/datasets/fileDownload/${value.id}">
             </audio>
         `)
-    }else if(["jpg", "png", "jpeg"].includes(value.type)){
+    } else if (["jpg", "png", "jpeg"].includes(value.type)) {
         $(".data-display").append(`
             <img src="/zuulserverApi/datasets/fileDownload/${value.id}">
         `)
-    }else if(["mp4"].includes(value.type)){
+    } else if (["mp4"].includes(value.type)) {
         $(".data-display").append(`
             <video width="400" controls>
                 <source src="/zuulserverApi/datasets/fileDownload/${value.id}" type="video/mp4">
@@ -128,27 +128,26 @@ function displayData(value) {
         `)
     }
 
-    function fetchCSVAsString(data){
+    function fetchCSVAsString(data) {
 
         $.ajax({
 
-            xhr: function()
-            {
-                var xhr = new window.XMLHttpRequest();
+            xhr: function () {
+                const xhr = new window.XMLHttpRequest();
                 //Upload progress
-                xhr.upload.addEventListener("progress", function(evt){
+                xhr.upload.addEventListener("progress", function (evt) {
                     if (evt.lengthComputable) {
-                        var percentComplete = evt.loaded / evt.total;
+                        const percentComplete = evt.loaded / evt.total;
                         //Do something with upload progress
                     }
                 }, false);
                 //Download progress
-                xhr.addEventListener("progress", function(evt){
+                xhr.addEventListener("progress", function (evt) {
                     if (evt.lengthComputable) {
-                        var percentComplete = evt.loaded / evt.total;
+                        const percentComplete = evt.loaded / evt.total;
                         //Do something with download progress
 
-                        $( "#progressbar" ).progressbar({
+                        $("#progressbar").progressbar({
                             value: percentComplete * 100
                         });
                         console.log(percentComplete);
@@ -163,7 +162,7 @@ function displayData(value) {
             data: data.id,
             processData: false,
             contentType: false,
-            success: function (dataset) {
+            success(dataset) {
 
                 let output;
                 if (data.type.toLowerCase() == "csv") {
@@ -192,9 +191,9 @@ function displayData(value) {
                         `<div id="pagination-container"></div>`
                     )
 
-                    var items = $(".table-container table tr");
-                    var numItems = items.length;
-                    var perPage = 10;
+                    const items = $(".table-container table tr");
+                    const numItems = items.length;
+                    const perPage = 10;
 
                     items.slice(perPage).hide();
 
@@ -204,8 +203,8 @@ function displayData(value) {
                         prevText: "&laquo;",
                         nextText: "&raquo;",
                         onPageClick: function (pageNumber) {
-                            var showFrom = perPage * (pageNumber - 1);
-                            var showTo = showFrom + perPage;
+                            const showFrom = perPage * (pageNumber - 1);
+                            const showTo = showFrom + perPage;
                             items.hide().slice(showFrom, showTo).show();
                         }
                     });
@@ -222,7 +221,7 @@ function displayData(value) {
                     $(".data-display").append(output)
                 }
             },
-            error: function (error) {
+            error (error) {
                 console.log("error", error)
             }
         })

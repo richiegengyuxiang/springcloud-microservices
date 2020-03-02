@@ -1,3 +1,5 @@
+@import "theme";
+
 .top-nav {
   background: white;
   position: fixed;
@@ -34,7 +36,7 @@
 .search-input {
   height: 32px;
   min-width: 500px;
-  border: 2px solid #ff9a00;
+  border: 2px solid $base-color;
   border-radius: 2px;
   padding-left: 12px;
   font-size: 16px;
@@ -48,5 +50,3 @@
     overflow-x: scroll;
   }
 }
-
-/*# sourceMappingURL=topNav.css.map */

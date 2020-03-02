@@ -15,11 +15,11 @@ $("#upload-form").on("submit", function(e){
 
         xhr: function()
         {
-            var xhr = new window.XMLHttpRequest();
+            const xhr = new window.XMLHttpRequest();
             //Upload progress
             xhr.upload.addEventListener("progress", function(evt){
                 if (evt.lengthComputable) {
-                    var percentComplete = evt.loaded / evt.total;
+                    const percentComplete = evt.loaded / evt.total;
                     //Do something with upload progress
 
                     $( "#progressbar" ).progressbar({
@@ -31,7 +31,7 @@ $("#upload-form").on("submit", function(e){
             //Download progress
             xhr.addEventListener("progress", function(evt){
                 if (evt.lengthComputable) {
-                    var percentComplete = evt.loaded / evt.total;
+                    const percentComplete = evt.loaded / evt.total;
                     //Do something with download progress
                     console.log(percentComplete);
                 }
@@ -48,7 +48,7 @@ $("#upload-form").on("submit", function(e){
         success : function(data) {
             console.log(data);
         },
-        error: function(error){
+        error(error){
             console.log(error);
         }
     })

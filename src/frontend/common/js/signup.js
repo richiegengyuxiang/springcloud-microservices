@@ -1,19 +1,19 @@
 $(".top-nav").load("../components/topNav.html")
 
 function validateEmail(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
 
 function validatePassword(password) {
-    var re = /^[0-9a-zA-Z]{8,}$/;
+    const re = /^[0-9a-zA-Z]{8,}$/;
     return re.test(String(password));
 }
 
 $("#signup-form").submit(function (event) {
     event.preventDefault();
     // Get all inputs and store as values object.
-    var values = {};
+    const values = {};
     $(".text-field").each(function () {
         values[this.name] = $(this).val();
     });
@@ -66,7 +66,7 @@ $("#signup-form").submit(function (event) {
             url: "/zuulserverApi/auth/signup",
             data: JSON.stringify(values),
             dataType: "text",
-            success: function (res) {
+            success (res) {
                 alert(res)
                 if (res == "email already exists") {
                     $(".email-field").css("border", "2px solid red");

@@ -4,7 +4,7 @@ $("#login-form").submit(function (event) {
     event.preventDefault();
 
     // Get all inputs and store as values object.
-    var values = {};
+    const values = {};
     $(".text-field").each(function () {
         values[this.name] = $(this).val();
     });
@@ -37,7 +37,7 @@ $("#login-form").submit(function (event) {
             url: "/zuulserverApi/auth/login",
             data: JSON.stringify(values),
             dataType: "text",
-            success: function (res) {
+            success (res) {
 
                 alert(res)
 
@@ -59,7 +59,7 @@ $("#login-form").submit(function (event) {
                     localStorage.setItem("user", res);
                 }
             },
-            error: function (result) {
+            error (result) {
                 console.log(result);
             }
         });

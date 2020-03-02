@@ -1,10 +1,10 @@
 $(".top-nav").load("../components/topNav.html")
 
 function getUrlParamValue(variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split("&");
-    for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split("=");
+    const query = window.location.search.substring(1);
+    const vars = query.split("&");
+    for (const i = 0; i < vars.length; i++) {
+        const pair = vars[i].split("=");
         if (pair[0] == variable) {
             return pair[1];
         }
@@ -12,11 +12,11 @@ function getUrlParamValue(variable) {
     return false;
 }
 
-// var userId = JSON.parse(localStorage.getItem("user")).id;
-// var receiverId = getUrlParamValue("user");
+// const userId = JSON.parse(localStorage.getItem("user")).id;
+// const receiverId = getUrlParamValue("user");
 
-var userId = "1"
-var receiverId = "2"
+const userId = "1"
+const receiverId = "2"
 
 function scrollToBottom(div) {
     $(div).scrollTop($(".message-container")[0].scrollHeight);
@@ -28,16 +28,16 @@ function scrollToBottom(div) {
 //     url: "http://localhost:5000/fetchUserInfo",
 //     data: {userId: receiverId},
 //     dataType: "json",
-//     success: function (res) {
+//     success (res) {
 //         $(".receiver").text(res[0].username);
 //     },
-//     error: function (result) {
+//     error (result) {
 //         console.log(result);
 //     }
 // });
 
 
-var websocket = null;
+const websocket = null;
 
 conectWebSocket()
 
@@ -101,12 +101,12 @@ function send() {
         "</div>"
     );
 
-    var message = $("textarea").val()
+    const message = $("textarea").val()
     websocket.send(message);
 }
 
 $("#send-btn").click(function () {
-    var data = {
+    const data = {
         senderId: userId,
         receiverId: receiverId,
         content: $("textarea").val()
@@ -145,7 +145,7 @@ function displayReceivedMessage(data) {
 //     }),
 //     dataType: "json",
 //     contentType: "application/json",
-//     success: function (res) {
+//     success (res) {
 //         $.each(res, function (index, value) {
 //             if (value.receiverId == userId) {
 //                 $(".message-container").append(
@@ -169,7 +169,7 @@ function displayReceivedMessage(data) {
 //         });
 //         scrollToBottom(".message-container");
 //     },
-//     error: function (result) {
+//     error (result) {
 //         console.log(result);
 //     }
 // });

@@ -5,15 +5,15 @@ $.ajax({
     type: "GET",
     url: "/zuulserverApi/posts/getAll",
     dataType: 'json',
-    success: function (data) {
+    success (data) {
 
         $(".result").html(`${data.length} Postsitory(s) Found`)
 
         loadPostItems(data)
 
-        var items = $(".post-container .post-item");
-        var numItems = items.length;
-        var perPage = 6;
+        const items = $(".post-container .post-item");
+        const numItems = items.length;
+        const perPage = 6;
 
         items.slice(perPage).hide();
 
@@ -23,13 +23,13 @@ $.ajax({
             prevText: "&laquo;",
             nextText: "&raquo;",
             onPageClick: function (pageNumber) {
-                var showFrom = perPage * (pageNumber - 1);
-                var showTo = showFrom + perPage;
+                const showFrom = perPage * (pageNumber - 1);
+                const showTo = showFrom + perPage;
                 items.hide().slice(showFrom, showTo).show();
             }
         });
     },
-    error: function (error) {
+    error (error) {
         console.log(error)
     }
 })

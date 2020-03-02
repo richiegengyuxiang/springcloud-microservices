@@ -5,7 +5,7 @@ $(document).ready(function () {
         window.location.href = `/search?q=${input}`
     })
 
-    var jwt = localStorage.getItem("user")
+    const jwt = localStorage.getItem("user")
     if (jwt != null) {
 
         $.ajax({
@@ -13,7 +13,7 @@ $(document).ready(function () {
             contentType: 'text/plain',
             url: "/zuulserverApi/user/getUserInfoByJwt",
             data: jwt,
-            success: function (res) {
+            success(res) {
                 $("#top-nav-inner").append(
                     `
                     <a href="" class="auth user">
@@ -27,7 +27,7 @@ $(document).ready(function () {
                     window.location.href = `/user/${res.username}`
                 })
             },
-            error: function (error) {
+            error(error) {
                 console.log(error)
             }
         })

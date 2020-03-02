@@ -1,6 +1,6 @@
 $(".top-nav").load("../components/topNav.html")
 
-$("#upload-form").on("submit", function(e){
+$("#upload-form").on("submit", function (e) {
     e.preventDefault();
 
     let formData = new FormData();
@@ -8,16 +8,16 @@ $("#upload-form").on("submit", function(e){
     formData.append("description", $("textarea").val())
 
     $.ajax({
-        type:"POST",
+        type: "POST",
         url: "/zuulserverApi/posts/new",
         data: formData,
         processData: false,
         contentType: false,
-        dataType : 'json',
-        success : function(data) {
+        dataType: 'json',
+        success(data) {
             console.log(data);
         },
-        error: function(error){
+        error(error) {
             console.log(error);
         }
     })

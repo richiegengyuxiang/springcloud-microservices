@@ -1,3 +1,5 @@
+@import "theme";
+
 .chat-container {
   background: #f8f8f8;
   width: 1000px;
@@ -22,7 +24,7 @@ textarea {
   width: 96%;
   height: 80px;
   border: none;
-  background: #F8F8F8;
+  background: $base-background-color;
   resize: none;
   padding: 12px;
 }
@@ -83,5 +85,3 @@ textarea:focus {
   width: 30px;
   height: 30px;
 }
-
-/*# sourceMappingURL=chat.css.map */
