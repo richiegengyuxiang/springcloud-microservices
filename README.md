@@ -1,6 +1,26 @@
 # microservices_app
+General purpose microservice architecture for modern web application.
+
+## Technologies
+### Frontend
+* Jquery
+* Sass
+* NPM: Package manager
+* Nginx: Serving statics files, reverse proxy for backend, load balancing
+### Backend
+* Spring Boot: Basic java framework
+* Mybatis: Persistence java framework
+* Redis Caching
+* Eureka: Load balancing
+* Zuul: API gateway
+### DB
+* MySQL
+### Devops
+* Docker
+* Docker compose
+
 ![Alt](microservices_architecture.png)
 
 # Set up
 * Install docker and docker compose
-* Run `sudo docker-compose up` to build all docker images and run containers.
+* Under `/microservices_app` directory, run `sudo docker-compose up` to build all docker images and run containers.

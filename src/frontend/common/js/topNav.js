@@ -35,13 +35,14 @@ $(document).ready(function () {
     } else {
         $("#top-nav-inner").append(
             `
-        <a href="/login/" class="auth login">
-            Log in
-        </a>
-        <a href="/signup/" class="auth signup">
-            Sign Up
-        </a>
-        `
+            <a href="/signup/" class="auth signup">
+                Sign Up
+            </a>
+            <a href="/login/" class="auth login">
+                Log in
+            </a>
+            
+            `
         )
     }
 
