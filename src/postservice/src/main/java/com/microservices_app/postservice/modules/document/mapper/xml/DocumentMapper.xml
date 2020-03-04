@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.microservices_app.postservice.modules.document.mapper.IDocumentMapper">
+    <select id="getAllDocuments" resultType="com.microservices_app.postservice.modules.document.entity.Document">
+        SELECT * FROM Documents
+    </select>
+
+    <select id="getByPostId" resultType="com.microservices_app.postservice.modules.document.entity.Document">
+        SELECT * FROM Documents WHERE postId = #{id}
+    </select>
+
+    <select id="getById" resultType="com.microservices_app.postservice.modules.document.entity.Document">
+        SELECT * FROM Documents WHERE id = #{id}
+    </select>
+
+    <insert id="storeDocument">
+        INSERT INTO Documents (id, content, postId) VALUES (#{id}, #{content}, #{postId})
+    </insert>
+
+</mapper>

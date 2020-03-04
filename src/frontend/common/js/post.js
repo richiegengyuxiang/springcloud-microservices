@@ -1,5 +1,6 @@
 $(".top-nav").load("../components/topNav.html")
-
+let pageURL = $(location).attr('href');
+let id = pageURL.split("/").pop();
 loadLeftSidebarNav()
 
 $(".content-container").append(`
@@ -22,7 +23,7 @@ $(".content-container").append(`
 
 $(".right-sidebar-nav").append(`
     <ul class="nav">
-        <li><a href="../../pages/edit.html">Edit this page</a></li>
+        <li><a href="/edit/${id}">Edit this page</a></li>
         <li><a>Dark mode</a></li>
     </ul>
 `)
