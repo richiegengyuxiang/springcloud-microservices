@@ -1,7 +1,9 @@
+@import "theme";
+
 .sidebar-nav {
   width: 280px;
   height: 100%;
-  background: #ebebeb;
+  background: $base-darkbackground-color;
   padding-top: 80px;
   display: block;
   position: fixed;
@@ -30,7 +32,7 @@
 
 .nav > li > a {
   font-size: 14px;
-  color: #004fff;
+  color: $base-color;
   position: relative;
   display: block;
   padding: 10px 15px;
@@ -43,5 +45,3 @@
   top: 0;
   padding: 100px 60px;
 }
-
-/*# sourceMappingURL=post.css.map */

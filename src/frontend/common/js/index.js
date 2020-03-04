@@ -5,9 +5,7 @@ $.ajax({
     type: "GET",
     url: "/zuulserverApi/posts/getAll",
     dataType: 'json',
-    success (data) {
-
-        $(".result").html(`${data.length} Postsitory(s) Found`)
+    success(data) {
 
         loadPostItems(data)
 
@@ -29,7 +27,7 @@ $.ajax({
             }
         });
     },
-    error (error) {
+    error(error) {
         console.log(error)
     }
 })

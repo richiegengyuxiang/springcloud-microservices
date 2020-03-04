@@ -4,9 +4,9 @@ spring:
   application:
     name: userservice
   datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://172.17.0.1:3306/datamart?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    username: mysqladmin@microserivcesapp-mysqlserver
+    password: Microservicesapp!
+    url: jdbc:mysql://microserivcesapp-mysqlserver.mysql.database.azure.com:3306/microservices_app?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
   servlet:
     multipart:
       max-request-size: 100MB

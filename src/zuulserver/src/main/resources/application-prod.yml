@@ -21,6 +21,10 @@ zuul:
       stripPrefix: false
       path: /auth/**
       serviceId: authservice
+    user:
+      stripPrefix: false
+      path: /user/**
+      serviceId: userservice
     posts:
       stripPrefix: false
       path: /posts/**

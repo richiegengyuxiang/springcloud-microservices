@@ -7,6 +7,8 @@ General purpose microservice architecture for modern web application.
 * Sass
 * NPM: Package manager
 * Nginx: Serving statics files, reverse proxy for backend, load balancing
+### Service Layer
+* Node.js
 ### Backend
 * Spring Boot: Basic framework
 * Mybatis: Persistence framework
@@ -16,7 +18,7 @@ General purpose microservice architecture for modern web application.
 * Flask
 ### DB
 * MySQL
-### Devops
+### DevOps
 * Docker
 * Docker compose
 

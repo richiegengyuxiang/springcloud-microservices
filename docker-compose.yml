@@ -38,16 +38,8 @@ services:
     ports:
       - 8762:8762
     restart: always
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://172.17.0.1:8762/"]
-      interval: 10s
-      timeout: 10s
-      retries: 5
     depends_on:
       - eurekaserver
-      - userservice
-      - postservice
-      - chatservice
     networks:
       - network1
   eurekaserver:
@@ -60,11 +52,6 @@ services:
     ports:
       - 8761:8761
     restart: always
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://172.17.0.1:8761/"]
-      interval: 10s
-      timeout: 10s
-      retries: 5
     networks:
       - network1
   authservice:

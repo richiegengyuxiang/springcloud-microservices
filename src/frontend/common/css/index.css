@@ -1,7 +1,6 @@
 .posts-container-inner {
     max-width: 800px;
     margin: 100px auto;
-    border: 1px solid #C0C0C0;
 }
 
 .header {
@@ -13,10 +12,6 @@
 
 .result {
     float: left;
-}
-
-.post-container {
-    background: white;
 }
 
 #filter {
