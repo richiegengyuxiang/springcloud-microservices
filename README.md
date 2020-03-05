@@ -2,14 +2,6 @@
 General purpose microservice architecture for modern web application.
 
 ## Technologies
-### Frontend
-* Jquery
-* Sass
-* NPM: Package manager
-* Nginx: Serving statics files, reverse proxy for backend, load balancing
-### Service Layer
-* Node.js
-### Backend
 * Spring Boot: Basic framework
 * Mybatis: Persistence framework
 * Redis: Caching
