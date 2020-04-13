@@ -6,10 +6,10 @@ General purpose java microservice architecture for modern web application.
 * Mybatis: Persistence framework
 * Redis: Caching
 * Spring Cloud: Distributed framework
-* Netflix Eureka: 
-  * Service Discovery
-  * Load balancing
-* Netflix Zuul: API gateway
+  * Eureka: 
+    * Service Discovery
+    * Load balancing
+  * Zuul: API gateway
 ### DB
 * MySQL
 ### DevOps
