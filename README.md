@@ -1,10 +1,11 @@
-# microservices_app
-General purpose microservice architecture for modern web application.
+# Spring Cloud Microservices
+General purpose java microservice architecture for modern web application.
 
 ## Technologies
 * Spring Boot: Basic framework
 * Mybatis: Persistence framework
 * Redis: Caching
+* Spring Cloud: Distributed framework
 * Netflix Eureka: Load balancing
 * Netflix Zuul: API gateway
 * Flask
