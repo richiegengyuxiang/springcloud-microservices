@@ -10,6 +10,7 @@ General purpose java microservice architecture for modern web application.
     * Service Discovery
     * Load balancing
   * Zuul: API gateway
+* Nginx: Proxy Server
 ### DB
 * MySQL
 ### DevOps
